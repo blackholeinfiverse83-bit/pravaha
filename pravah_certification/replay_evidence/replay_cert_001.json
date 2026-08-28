@@ -1,0 +1,20 @@
+{
+  "test_id": "CERT-REPLAY-001",
+  "timestamp": "2026-08-27T06:26:04.052686+00:00",
+  "environment": "PROD-CERT",
+  "commit_sha": "e8a91f34c2b9a7018d3e",
+  "execution_id": "exec-cert-3d5bb989",
+  "trace_id": "trace-cert-cbe176f0",
+  "original_execution_hash": "d31d86ea27b2373ee8cc9ed68a57f4f2d24e2f84c95926aa7bd3e7ce8cba29b7",
+  "replayed_execution_hash": "d31d86ea27b2373ee8cc9ed68a57f4f2d24e2f84c95926aa7bd3e7ce8cba29b7",
+  "hashes_match": true,
+  "state_history": [
+    "RECEIVED",
+    "SENDED",
+    "VALIDATED",
+    "ENFORCED",
+    "EXECUTED",
+    "JOURNALED"
+  ],
+  "result": "PASS"
+}

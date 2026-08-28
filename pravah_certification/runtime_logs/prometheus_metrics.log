@@ -1,0 +1,16 @@
+=== GET http://163.128.209.18:7000/metrics ===
+Timestamp: 2026-08-27T06:26:19.305273+00:00
+HTTP Status: 200
+
+# HELP pravah_stability_score Current mathematical stability score of the ecosystem
+# TYPE pravah_stability_score gauge
+pravah_stability_score 100
+# HELP pravah_active_apps_total Total number of registered ecosystem services
+# TYPE pravah_active_apps_total gauge
+pravah_active_apps_total 49
+# HELP pravah_recoveries_total Total number of autonomous recovery actions executed
+# TYPE pravah_recoveries_total counter
+pravah_recoveries_total 0
+# HELP pravah_failures_total Total number of system failures/degradations observed
+# TYPE pravah_failures_total counter
+pravah_failures_total 0

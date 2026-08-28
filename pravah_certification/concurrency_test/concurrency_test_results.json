@@ -1,0 +1,19 @@
+{
+  "test_id": "CERT-CONC-001",
+  "timestamp": "2026-08-27T06:26:10.596914+00:00",
+  "environment": "PROD-CERT",
+  "commit_sha": "e8a91f34c2b9a7018d3e",
+  "total_requests": 500,
+  "concurrency": 20,
+  "total_duration_seconds": 4.07,
+  "throughput_rps": 122.99,
+  "success_count": 439,
+  "failure_count": 61,
+  "governance_blocks": 439,
+  "latency_p50_ms": 129.42,
+  "latency_p95_ms": 347.57,
+  "latency_p99_ms": 477.08,
+  "journal_events_created": 500,
+  "trace_correlation_rate_pct": 100.0,
+  "sequence_continuity": "PERFECT (0 gaps, 0 duplicates)"
+}

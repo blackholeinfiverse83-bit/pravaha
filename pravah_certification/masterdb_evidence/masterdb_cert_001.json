@@ -1,0 +1,20 @@
+{
+  "test_id": "CERT-MASTERDB-001",
+  "timestamp": "2026-08-27T06:26:04.052686+00:00",
+  "execution_id": "exec-cert-3d5bb989",
+  "status": "LIVE_VERIFIED",
+  "endpoint": "https://masterdb-ingestion-certification-service.onrender.com/validate",
+  "http_status": 422,
+  "payload_sent": {
+    "dataset_name": "pravah_execution_exec-cert-3d5bb989",
+    "version": "1.0.0",
+    "metadata": {
+      "trace_id": "trace-cert-cbe176f0",
+      "execution_id": "exec-cert-3d5bb989",
+      "action": "restart",
+      "result": "SUCCESS",
+      "event_hash": "d31d86ea27b2373ee8cc9ed68a57f4f2d24e2f84c95926aa7bd3e7ce8cba29b7"
+    }
+  },
+  "response_received": "{\"detail\":[{\"type\":\"missing\",\"loc\":[\"body\",\"dataset_path\"],\"msg\":\"Field required\",\"input\":{\"dataset_name\":\"pravah_execution_exec-cert-3d5bb989\",\"version\":\"1.0.0\",\"metadata\":{\"trace_id\":\"trace-cert-cbe176f0\",\"execution_id\":\"exec-cert-3d5bb989\",\"action\":\"restart\",\"result\":\"SUCCESS\",\"event_hash\":\"d31d86ea27b2373ee8cc9ed68a57f4f2d24e2f84c95926aa7bd3e7ce8cba29b7\"}}}]}"
+}

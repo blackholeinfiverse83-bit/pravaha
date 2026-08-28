@@ -1,0 +1,15 @@
+{
+  "test_id": "CERT-BUCKET-001",
+  "timestamp": "2026-08-27T06:26:04.052686+00:00",
+  "execution_id": "exec-cert-3d5bb989",
+  "status": "MOCK_FALLBACK",
+  "note": "Render free tier bucket endpoint returned 503. Stored in certification evidence bundle.",
+  "payload": {
+    "trace_id": "trace-cert-cbe176f0",
+    "execution_id": "exec-cert-3d5bb989",
+    "outcome": "SUCCESS",
+    "action_executed": "restart",
+    "node_status_post": "HEALTHY",
+    "completed_at": "2026-08-27T06:26:05.971268+00:00"
+  }
+}

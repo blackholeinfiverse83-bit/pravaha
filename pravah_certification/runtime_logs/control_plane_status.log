@@ -1,0 +1,5 @@
+=== GET http://163.128.209.18:8010/control-plane/status ===
+Timestamp: 2026-08-27T06:26:19.027756+00:00
+HTTP Status: 200
+
+{"status":"connected","apps_managed":0,"total_decisions":0,"metrics":{"timestamp":"2026-08-26T11:27:59.720252+00:00","control_plane_apps":0,"rl_decisions_made":0,"sync_status":"active"},"last_sync":"2026-08-27T06:26:22.558697+00:00"}

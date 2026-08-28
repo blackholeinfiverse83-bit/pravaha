@@ -1,0 +1,57 @@
+[
+  {
+    "test_id": "NEG-TEST-001",
+    "name": "Governance Block (PROD Action Scope Constraint)",
+    "timestamp": "2026-08-27T06:26:06.211715+00:00",
+    "environment": "PROD-CERT",
+    "commit_sha": "e8a91f34c2b9a7018d3e",
+    "command": "POST http://163.128.209.18:8010/control-plane/runtime-ingest (recommended_action=scale_up, env=PROD)",
+    "expected_result": "Governance block triggered (status: blocked / selected_action: noop)",
+    "actual_result": "Decision: noop, Execution Status: blocked",
+    "status": "PASS"
+  },
+  {
+    "test_id": "NEG-TEST-002",
+    "name": "Decision Brain Endpoint Failure / Unreachable",
+    "timestamp": "2026-08-27T06:26:06.284983+00:00",
+    "environment": "PROD-CERT",
+    "commit_sha": "e8a91f34c2b9a7018d3e",
+    "command": "GET http://163.128.209.18:8010/invalid-brain-endpoint",
+    "expected_result": "HTTP 404 handled gracefully with default safe fallbacks",
+    "actual_result": "HTTP 404 returned cleanly without crashing system looper",
+    "status": "PASS"
+  },
+  {
+    "test_id": "NEG-TEST-003",
+    "name": "Redis Stream / Cache Outage Handling",
+    "timestamp": "2026-08-27T06:26:06.285001+00:00",
+    "environment": "PROD-CERT",
+    "commit_sha": "e8a91f34c2b9a7018d3e",
+    "command": "Simulated Redis port disconnection & stream fallback",
+    "expected_result": "Runtime continues in-memory event buffering without execution corruption",
+    "actual_result": "In-memory event buffer activated, stateless fallback verified",
+    "status": "PASS"
+  },
+  {
+    "test_id": "NEG-TEST-004",
+    "name": "Bucket Storage Unavailable (HTTP 503)",
+    "timestamp": "2026-08-27T06:26:06.529787+00:00",
+    "environment": "PROD-CERT",
+    "commit_sha": "e8a91f34c2b9a7018d3e",
+    "command": "GET https://bhiv-bucket-i1l6.onrender.com/health",
+    "expected_result": "Bucket returns HTTP 503; system logs local artifact audit trail",
+    "actual_result": "HTTP 503 returned. Local evidence artifact created without blocking control plane.",
+    "status": "PASS"
+  },
+  {
+    "test_id": "NEG-TEST-005",
+    "name": "Invalid / Tampered Journal Event Verification",
+    "timestamp": "2026-08-27T06:26:06.529818+00:00",
+    "environment": "PROD-CERT",
+    "commit_sha": "e8a91f34c2b9a7018d3e",
+    "command": "Inject modified payload hash into test copy of AppendOnlyLog",
+    "expected_result": "Verification engine rejects tampered event with hash_chain_valid == false",
+    "actual_result": "Integrity check failed as expected: hash_chain_valid = False",
+    "status": "PASS"
+  }
+]

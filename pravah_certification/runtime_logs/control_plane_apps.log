@@ -1,0 +1,5 @@
+=== GET http://163.128.209.18:8010/control-plane/apps ===
+Timestamp: 2026-08-27T06:26:19.112835+00:00
+HTTP Status: 200
+
+{"total_apps":0,"apps":[],"integration_status":"connected"}

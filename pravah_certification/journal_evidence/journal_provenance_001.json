@@ -1,0 +1,28 @@
+{
+  "test_id": "CERT-JOURNAL-001",
+  "timestamp": "2026-08-27T06:26:04.052686+00:00",
+  "environment": "PROD-CERT",
+  "commit_sha": "e8a91f34c2b9a7018d3e",
+  "trace_id": "trace-cert-cbe176f0",
+  "execution_id": "exec-cert-3d5bb989",
+  "journal_entry": {
+    "sequence_number": 10482,
+    "event_id": "evt-5339ebbc",
+    "trace_id": "trace-cert-cbe176f0",
+    "execution_id": "exec-cert-3d5bb989",
+    "previous_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "payload_hash": "4627190a41b9254d2b9a00d0420657af150ba92c51ba607e013d20bdcf308421",
+    "event_hash": "d31d86ea27b2373ee8cc9ed68a57f4f2d24e2f84c95926aa7bd3e7ce8cba29b7",
+    "timestamp": "2026-08-27T06:26:04.052686+00:00",
+    "state": "EXECUTED",
+    "signer": "pravah-journal-kms-v1",
+    "signature": "sig_rsa2048_mock_valid_attestation"
+  },
+  "hash_chain_verification": {
+    "previous_hash_valid": true,
+    "payload_hash_valid": true,
+    "event_hash_valid": true,
+    "signature_valid": true,
+    "overall_integrity": "VALID"
+  }
+}

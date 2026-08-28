@@ -1,0 +1,5 @@
+=== GET https://masterdb-ingestion-certification-service.onrender.com/health ===
+Timestamp: 2026-08-27T06:26:19.650412+00:00
+HTTP Status: 200
+
+{"status":"ok"}
