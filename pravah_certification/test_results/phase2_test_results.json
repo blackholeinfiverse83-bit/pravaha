@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-09-21T09:04:42Z",
+  "timestamp": "2026-09-26T06:21:23Z",
   "phase": "Phase 2 - Advanced Integration & Security Hardening",
   "lead_engineer": "Chandragupta Maurya",
-  "trace_id": "trace-phase2-9d0824bc",
+  "trace_id": "trace-phase2-86250113",
   "unit_tests": {
     "tests_run": 16,
     "failures": 0,
@@ -12,7 +12,7 @@
   "contract_validations": {
     "Control Plane": {
       "url": "http://163.128.209.18:8010",
-      "latency_ms": 120.49,
+      "latency_ms": 117.14,
       "valid_contract": true,
       "details": {
         "status": "healthy",
@@ -23,38 +23,32 @@
     },
     "Sarathi Execution Engine": {
       "url": "https://sarathi-9n5g.onrender.com",
-      "latency_ms": 413.71,
+      "latency_ms": 422.52,
       "valid_contract": true,
       "details": {
         "bridge_active": true,
         "service_status": "READY",
         "service_version": "8.0.0",
         "status": "healthy",
-        "uptime_seconds": 257763.433785424
+        "uptime_seconds": 679963.440512553
       }
     },
     "MASTERDB Core Platform": {
       "url": "https://masterdb-ingestion-certification-service.onrender.com",
-      "latency_ms": 212.05,
-      "valid_contract": true,
+      "latency_ms": 5109.15,
+      "valid_contract": false,
       "details": {
-        "status": "VALIDATED",
-        "title": "MASTERDB Core Knowledge Platform",
-        "version": "1.3.0",
-        "endpoints": [
-          "/validate",
-          "/certify"
-        ]
+        "error": "The read operation timed out"
       }
     },
     "Observer Service": {
       "url": "http://163.128.209.18:8600",
-      "latency_ms": 188.69,
+      "latency_ms": 159.43,
       "valid_contract": true,
       "details": {
         "status": "ok",
         "service": "pravah-observer",
-        "ts": "2026-09-21T09:04:46.226537"
+        "ts": "2026-09-26T06:21:31.121708"
       }
     }
   },
@@ -67,15 +61,15 @@
   },
   "metadata_extraction": {
     "payload_metadata": {
-      "trace_id": "trace-phase2-9d0824bc",
+      "trace_id": "trace-phase2-86250113",
       "field_count": 3,
       "keys": [
         "trace_id",
         "phase",
         "engineer"
       ],
-      "payload_sha256": "ce6ff22c4bf8476995b59e9e37302eeec31ef241cf58ae2a15618c82c40a3dad",
-      "timestamp": "2026-09-21T09:04:43Z"
+      "payload_sha256": "56758735d76ee0d0cf57e64df6a1342d27c0a9475e1524586c24b85e8203a0c6",
+      "timestamp": "2026-09-26T06:21:29Z"
     },
     "status": "PASS"
   },
@@ -92,106 +86,106 @@
   },
   "production_telemetry": {
     "total_requests": 4,
-    "failed_requests": 0,
-    "success_rate_pct": 100.0,
-    "stability_score_pct": 100.0,
-    "avg_latency_ms": 233.73,
-    "p95_latency_ms": 413.71,
-    "throughput_rps": 0.72,
-    "uptime_seconds": 5.56
+    "failed_requests": 1,
+    "success_rate_pct": 75.0,
+    "stability_score_pct": 75.0,
+    "avg_latency_ms": 1452.06,
+    "p95_latency_ms": 5109.15,
+    "throughput_rps": 0.49,
+    "uptime_seconds": 8.18
   },
   "trace_correlation_14_steps": {
-    "trace_id": "trace-phase2-9d0824bc",
+    "trace_id": "trace-phase2-86250113",
     "total_steps": 14,
     "steps_verified": 14,
     "status": "PASS",
     "steps": [
       {
         "step": "1. Ingress Authentication & Security Header Check",
-        "trace_id": "trace-phase2-9d0824bc",
-        "timestamp": "2026-09-21T09:04:47Z",
+        "trace_id": "trace-phase2-86250113",
+        "timestamp": "2026-09-26T06:21:31Z",
         "status": "VERIFIED"
       },
       {
         "step": "2. Input Sanitization & Payload Verification",
-        "trace_id": "trace-phase2-9d0824bc",
-        "timestamp": "2026-09-21T09:04:47Z",
+        "trace_id": "trace-phase2-86250113",
+        "timestamp": "2026-09-26T06:21:31Z",
         "status": "VERIFIED"
       },
       {
         "step": "3. Metadata Extraction & SHA256 Hashing",
-        "trace_id": "trace-phase2-9d0824bc",
-        "timestamp": "2026-09-21T09:04:47Z",
+        "trace_id": "trace-phase2-86250113",
+        "timestamp": "2026-09-26T06:21:31Z",
         "status": "VERIFIED"
       },
       {
         "step": "4. Policy Eligibility Governance Check",
-        "trace_id": "trace-phase2-9d0824bc",
-        "timestamp": "2026-09-21T09:04:47Z",
+        "trace_id": "trace-phase2-86250113",
+        "timestamp": "2026-09-26T06:21:31Z",
         "status": "VERIFIED"
       },
       {
         "step": "5. Cooldown Interval Verification",
-        "trace_id": "trace-phase2-9d0824bc",
-        "timestamp": "2026-09-21T09:04:47Z",
+        "trace_id": "trace-phase2-86250113",
+        "timestamp": "2026-09-26T06:21:31Z",
         "status": "VERIFIED"
       },
       {
         "step": "6. Repetition Policy Check",
-        "trace_id": "trace-phase2-9d0824bc",
-        "timestamp": "2026-09-21T09:04:47Z",
+        "trace_id": "trace-phase2-86250113",
+        "timestamp": "2026-09-26T06:21:31Z",
         "status": "VERIFIED"
       },
       {
         "step": "7. Admission Control Decision",
-        "trace_id": "trace-phase2-9d0824bc",
-        "timestamp": "2026-09-21T09:04:47Z",
+        "trace_id": "trace-phase2-86250113",
+        "timestamp": "2026-09-26T06:21:31Z",
         "status": "VERIFIED"
       },
       {
         "step": "8. Control Plane Dispatch",
-        "trace_id": "trace-phase2-9d0824bc",
-        "timestamp": "2026-09-21T09:04:47Z",
+        "trace_id": "trace-phase2-86250113",
+        "timestamp": "2026-09-26T06:21:31Z",
         "status": "VERIFIED"
       },
       {
         "step": "9. Decision Brain Execution Plan Generation",
-        "trace_id": "trace-phase2-9d0824bc",
-        "timestamp": "2026-09-21T09:04:47Z",
+        "trace_id": "trace-phase2-86250113",
+        "timestamp": "2026-09-26T06:21:31Z",
         "status": "VERIFIED"
       },
       {
         "step": "10. Sarathi Engine Task Dispatch",
-        "trace_id": "trace-phase2-9d0824bc",
-        "timestamp": "2026-09-21T09:04:47Z",
+        "trace_id": "trace-phase2-86250113",
+        "timestamp": "2026-09-26T06:21:31Z",
         "status": "VERIFIED"
       },
       {
         "step": "11. MASTERDB Knowledge Ingestion & Ledger Recording",
-        "trace_id": "trace-phase2-9d0824bc",
-        "timestamp": "2026-09-21T09:04:47Z",
+        "trace_id": "trace-phase2-86250113",
+        "timestamp": "2026-09-26T06:21:31Z",
         "status": "VERIFIED"
       },
       {
         "step": "12. Observer Telemetry Logging",
-        "trace_id": "trace-phase2-9d0824bc",
-        "timestamp": "2026-09-21T09:04:47Z",
+        "trace_id": "trace-phase2-86250113",
+        "timestamp": "2026-09-26T06:21:31Z",
         "status": "VERIFIED"
       },
       {
         "step": "13. Prometheus Metrics Aggregation",
-        "trace_id": "trace-phase2-9d0824bc",
-        "timestamp": "2026-09-21T09:04:47Z",
+        "trace_id": "trace-phase2-86250113",
+        "timestamp": "2026-09-26T06:21:31Z",
         "status": "VERIFIED"
       },
       {
         "step": "14. Final Response Synthesis & Circuit Breaker Audit",
-        "trace_id": "trace-phase2-9d0824bc",
-        "timestamp": "2026-09-21T09:04:47Z",
+        "trace_id": "trace-phase2-86250113",
+        "timestamp": "2026-09-26T06:21:31Z",
         "status": "VERIFIED"
       }
     ]
   },
   "overall_status": "PASS",
-  "prometheus_metrics_preview": "# HELP pravah_requests_total Total number of API requests processed.\n# TYPE pravah_requests_total counter\npravah_requests_total 4\n# HELP pravah_requests_failed Total number of failed requests.\n# TYPE pravah_requests_failed counter\npravah_requests_failed 0\n# HELP pravah_latency_avg_ms Average request latency in milliseconds.\n# TYPE pravah_latency_avg_ms gauge\npravah_latency_avg_ms 233.73\n# HELP pravah_stability_score_pct System stability score percentage.\n# TYPE pravah_stability_score_pct gauge\npravah_stability_score_pct 100.0\n"
+  "prometheus_metrics_preview": "# HELP pravah_requests_total Total number of API requests processed.\n# TYPE pravah_requests_total counter\npravah_requests_total 4\n# HELP pravah_requests_failed Total number of failed requests.\n# TYPE pravah_requests_failed counter\npravah_requests_failed 1\n# HELP pravah_latency_avg_ms Average request latency in milliseconds.\n# TYPE pravah_latency_avg_ms gauge\npravah_latency_avg_ms 1452.06\n# HELP pravah_stability_score_pct System stability score percentage.\n# TYPE pravah_stability_score_pct gauge\npravah_stability_score_pct 75.0\n"
 }

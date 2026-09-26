@@ -7,7 +7,7 @@
 | --- | --- | --- | --- | --- | --- |
 | **Control Plane** | `LIVE` | `http://163.128.209.18:8010` | 71.93 | 200 | Verified runtime response |
 | **Decision Brain** | `LIVE` | `http://163.128.209.18:8010/health` | 71.93 | 200 | Verified runtime response |
-| **Sarathi Execution Engine** | `LIVE` | `https://sarathi-9n5g.onrender.com/health` | 258.86 | 200 | Verified runtime response |
+| **Sarathi Execution Engine**       | `LIVE` | `https://sarathi-9n5g.onrender.com/health` | 258.86 | 200 | Verified runtime response |
 | **MASTERDB Core** | `LIVE` | `https://masterdb-ingestion-certification-service.onrender.com/health` | 232.73 | 200 | Verified runtime response |
 | **Observer** | `LIVE` | `http://163.128.209.18:8600/health` | 61.57 | 200 | Verified runtime response |
 | **Prometheus** | `LIVE` | `http://163.128.209.18:9093/-/healthy` | 75.57 | 200 | Verified runtime response |
