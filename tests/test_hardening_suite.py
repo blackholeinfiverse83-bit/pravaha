@@ -4,10 +4,12 @@ Standard Library Unittest Framework
 Assignee: Chandragupta Maurya
 """
 
+import json
 import os
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch, MagicMock
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
@@ -160,6 +162,84 @@ class TestProductionMonitor(unittest.TestCase):
         prom_text = mon.export_prometheus_metrics()
         self.assertIn("pravah_requests_total 1", prom_text)
         self.assertIn("pravah_stability_score_pct 100.0", prom_text)
+
+
+def _mock_response(status_code: int, payload: dict):
+    """Build a mock object compatible with `with urllib.request.urlopen(...) as resp:`."""
+    mock_resp = MagicMock()
+    mock_resp.status = status_code
+    mock_resp.read.return_value = json.dumps(payload).encode("utf-8")
+    mock_resp.__enter__.return_value = mock_resp
+    mock_resp.__exit__.return_value = False
+    return mock_resp
+
+
+class TestContractValidator(unittest.TestCase):
+    """Unit tests for ContractValidator using mocked network responses.
+
+    Live endpoints are not reachable from an isolated CI/build sandbox, so
+    these tests validate the contract-matching *logic* deterministically by
+    mocking urllib.request.urlopen, per the module's own docstring contract
+    (e.g. requiring both '/validate' and '/certify' in the MASTERDB spec).
+    """
+
+    def setUp(self):
+        self.validator = ContractValidator()
+
+    @patch("pravah_hardening.contract_validator.urllib.request.urlopen")
+    def test_validate_masterdb_contract_valid(self, mock_urlopen):
+        spec = {
+            "info": {"title": "MASTERDB Core", "version": "1.3.0"},
+            "paths": {"/validate": {}, "/certify": {}}
+        }
+        mock_urlopen.return_value = _mock_response(200, spec)
+        is_valid, details = self.validator.validate_masterdb_contract("https://example.com")
+        self.assertTrue(is_valid)
+        self.assertEqual(details["status"], "VALIDATED")
+        self.assertEqual(details["endpoints"], ["/validate", "/certify"])
+
+    @patch("pravah_hardening.contract_validator.urllib.request.urlopen")
+    def test_validate_masterdb_contract_missing_paths(self, mock_urlopen):
+        spec = {"info": {"title": "MASTERDB Core"}, "paths": {"/validate": {}}}
+        mock_urlopen.return_value = _mock_response(200, spec)
+        is_valid, details = self.validator.validate_masterdb_contract("https://example.com")
+        self.assertFalse(is_valid)
+        self.assertIn("error", details)
+
+    @patch("pravah_hardening.contract_validator.urllib.request.urlopen")
+    def test_validate_sarathi_contract_healthy(self, mock_urlopen):
+        mock_urlopen.return_value = _mock_response(200, {"status": "healthy", "bridge_active": True})
+        is_valid, payload = self.validator.validate_sarathi_contract("https://example.com")
+        self.assertTrue(is_valid)
+        self.assertTrue(payload["bridge_active"])
+
+    @patch("pravah_hardening.contract_validator.urllib.request.urlopen")
+    def test_validate_sarathi_contract_bridge_inactive(self, mock_urlopen):
+        mock_urlopen.return_value = _mock_response(200, {"status": "healthy", "bridge_active": False})
+        is_valid, payload = self.validator.validate_sarathi_contract("https://example.com")
+        self.assertFalse(is_valid)
+
+    @patch("pravah_hardening.contract_validator.urllib.request.urlopen")
+    def test_validate_control_plane_contract_healthy(self, mock_urlopen):
+        mock_urlopen.return_value = _mock_response(200, {"status": "healthy"})
+        is_valid, payload = self.validator.validate_control_plane_contract("https://example.com")
+        self.assertTrue(is_valid)
+
+    @patch("pravah_hardening.contract_validator.urllib.request.urlopen")
+    def test_validate_observer_contract_ok(self, mock_urlopen):
+        mock_urlopen.return_value = _mock_response(200, {"status": "ok", "service": "pravah-observer"})
+        is_valid, payload = self.validator.validate_observer_contract("https://example.com")
+        self.assertTrue(is_valid)
+
+    @patch("pravah_hardening.contract_validator.urllib.request.urlopen")
+    def test_validate_observer_contract_network_failure_returns_false_not_raise(self, mock_urlopen):
+        """A network error (e.g. HTTP 503 / connection refused) must degrade
+        to a safe (False, {'error': ...}) result rather than raise, so that
+        callers (and CircuitBreaker) can apply fallback logic."""
+        mock_urlopen.side_effect = OSError("Connection refused")
+        is_valid, payload = self.validator.validate_observer_contract("https://example.com")
+        self.assertFalse(is_valid)
+        self.assertIn("error", payload)
 
 
 if __name__ == "__main__":

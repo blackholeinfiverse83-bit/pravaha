@@ -8,7 +8,7 @@ import hashlib
 import json
 import os
 import time
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, Tuple
 
 
 class MetadataExtractor:
